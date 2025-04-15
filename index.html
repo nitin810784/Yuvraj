@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry Khushi - Yuvraj</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            width: 95%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .heart {
+            color: #ff6b6b;
+            font-size: 30px;
+            animation: beat 1s infinite alternate;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: fall 5s linear infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes beat {
+            to { transform: scale(1.2); }
+        }
+        
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+                transform: rotate(360deg);
+            }
+        }
+        
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="flowers" id="flowers"></div>
+    
+    <div class="container">
+        <h1>Dear <span class="highlight">Khushi</span> ❤️</h1>
+        
+        <div class="heart">♥</div>
+        
+        <p>Mujhe pata hai maine bahut badi galti ki hai...</p>
+        
+        <p>Tumhara call time se nahi utha paya, aur yeh mere liye bahut afsos ki baat hai.</p>
+        
+        <p>Tum mere liye important ho, aur main hamesha tumhare calls ka intezaar karta hoon. Aaj bas thoda sa late ho gaya 😔</p>
+        
+        <p>Mujhe maaf kar do na? Main promise karta hoon aisa dobara nahi hoga.</p>
+        
+        <p>Tumhare saath dosti nayi hai lekin tumhari value mere liye bahut hai.</p>
+        
+        <p>Bas ek smile wapis dedo, aur hum sab bhool jayenge?</p>
+        
+        <button class="btn" onclick="forgiveMe()">Maaf Karogi?</button>
+    </div>
+    
+    <script>
+        // Create falling flowers
+        function createFlowers() {
+            const flowersContainer = document.getElementById('flowers');
+            const emojis = ['🌸', '🌺', '🌷', '🌼', '🌹', '💐'];
+            
+            for (let i = 0; i < 15; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                flower.style.left = Math.random() * 100 + '%';
+                flower.style.animationDuration = 5 + Math.random() * 10 + 's';
+                flower.style.animationDelay = Math.random() * 5 + 's';
+                flowersContainer.appendChild(flower);
+            }
+        }
+        
+        // Forgive button action
+        function forgiveMe() {
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <h1>Thank You Khushi! <span class="heart">♥</span></h1>
+                <p>Tumhare jaise dost milne bahut mushkil hai!</p>
+                <p>Ab kabhi call miss nahi karunga, promise!</p>
+                <p>Chalo ab ek nayi shuruwat karte hain...</p>
+                <div class="heart" style="font-size: 40px;">♥</div>
+                <p>- Yuvraj</p>
+            `;
+            
+            // Create more flowers
+            createFlowers();
+        }
+        
+        // Initialize flowers when page loads
+        window.onload = createFlowers;
+    </script>
+</body>
+</html>
